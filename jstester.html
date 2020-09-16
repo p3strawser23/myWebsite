@@ -1,0 +1,65 @@
+<html>
+<head>
+<script language = "JavaScript">
+
+var myList = [ "Anne", "Bob", "Cathy", "Doug" ];
+function tester()
+{
+	answer = 0
+	var answer = confirm("Name needed.");
+	var answer = prompt("What is your name?");
+	if(answer == "Toby")
+	{
+		 alert("Hello creator.")
+	}
+	else
+	{
+		alert("Welcome to my page! I know your name is " + answer + " now! I hope you like my page! Please visit my other pages.")
+	}
+}
+
+var number = 11;
+function space()
+{
+	
+	number = number - 1;
+	if( number == 0 )
+	{
+		alert("Blast off!!");
+		number = 11;
+	}
+	else
+	{
+		alert(number)
+	}
+	
+}
+
+</script>
+
+</head>
+<body bgcolor = "grey">
+
+<center> 
+<h1> JavaScript Tester </h1>
+<br/>
+<input type="button" value="Click to tell me your name" onClick="tester()">
+
+<br/>
+<br/>
+<br/>
+<input type="button" value="Don't click" onClick="space()">
+<h2>
+Links to other pages
+<h2/>
+<p/>
+<p/>
+<font color = "white">
+<font size = "2">
+Click here to <a href="index.html"> go to my index page </a>
+</font>
+</font>
+<p/>
+</center>
+</body>
+</html>
