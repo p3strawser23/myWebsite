@@ -1,0 +1,53 @@
+<html>
+<head>
+
+<script language = "JavaScript">
+var picList = [ "images/ashSlide1.jpg", "images/jagerSlide2.jpg", "images/maverickSlide3.jpg", "images/elaSlide4.jpg", "images/smokeSlide5.jpg" ];
+var clipList = [ "sounds/RainbowSixSiegeAshOperatorVideo.mp3", "sounds/RainbowSixSiegeJägerOperatorVideo.mp3", "sounds/RainbowSixSiegeMaverickOperatorVideo.mp3", "sounds/RainbowSixSiegeElaOperatorVideo.mp3", "sounds/RainbowSixSiegeSmokeOperatorVideo.mp3" ]; 
+
+
+
+var number = 0;
+function startShow()
+{
+
+	var pic = document.getElementById("picFrame");
+	var clip = document.getElementById("myAudio");
+	
+	pic.src=picList[number];
+	clip.src = clipList[number];
+	clip.play();
+	
+	if( number > 4 )
+	{
+		
+		number = 0;
+	}
+	else
+	{
+		document.getElementById("picFrame").src = picList[number];
+		number=number+1;
+	}
+}
+
+
+</script>
+
+</head>
+<body background="images/herobackground.gif">
+
+<center>
+<h1> Welcome to the Sound Storm </h1>
+</p>
+</p>
+Click here to <a href="index.html"> go to my Home page </a> <br/><br/>
+<input type="button" value="Click me" onClick="startShow()">
+</p>
+<img id="picFrame" src="images/slide0.jpg"/>
+<audio id="myAudio"> </audio>
+</p>
+
+</center>
+</font>
+</body>
+</html>
