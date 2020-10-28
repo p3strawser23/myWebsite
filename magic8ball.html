@@ -7,8 +7,8 @@ var answers = ["yes", "no", "maybe", "what do you think?", "Probably so", "I dis
 function random()
 {
 	var rand = -1; //local variable
-	var userQ = document.getElementById("question")
-	var myAnswer = document.getElementById("answers")
+	var userQ = document.getElementById("question");
+	var myAnswer = document.getElementById("answers");
 	
 	//alert(userQ.value)
 	
@@ -28,11 +28,26 @@ function random()
 	}
 	else
 	{
+		
 		myAnswer.value = answers[rand];
+		
+		if(rand == 0)
+		{
+			document.getElementById("player").play();
+		}
+		
+		
 		
 	}
 
 }
+
+
+
+
+
+
+
 
 function reset()
 {
@@ -62,6 +77,9 @@ Put your question in the first text box below.</p>
 <input type="button" value="Magic ball will give his insight" onClick="random()"/></p></p>
 
 <input id = "answers" type = "text" size="80" readonly = true />
+
+<audio id="player" src="sounds/applause4.mp3"> </audio>
+
 </font>
 
 </center>
