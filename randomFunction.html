@@ -1,0 +1,31 @@
+<html>
+<head>
+<script language = "JavaScript">
+var rand = -1;
+
+function random()
+{
+	rand = Math.random()*21; //0 - 20 Math.random returns a random decimal between 0 inclusive and 1 exclusive.
+	
+	rand = Math.floor(rand); //returns the nearest integer that is less than the parameter
+	
+	rand = rand -10; //-10-10 adjusting the range to the start and end point
+	
+	//rand contains a value between 0-9 (inclusive)
+	
+	alert(rand);
+}
+
+</script>
+</head>
+<body>
+<center>
+<h1>Random Tester</h1>
+<input type="button" value="Click here" onClick="random()"/>
+<br/>
+<br/>
+Click here to <a href ="index.html"> return home </a>
+
+</center>
+</body>
+</html>
