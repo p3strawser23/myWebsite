@@ -1,9 +1,9 @@
 <html>
 <head>
 <script languague = "JavaScript">
-var answers = ["yes", "no", "maybe", "what do you think?", "Probably so", "I disagree", "Ask again later", "It depends", "i think so", "uncertain", "sure"]
+var answers = ["yes", "no", "maybe", "what do you think?", "Probably so", "I disagree", "Ask again later", "It depends", "I think so", "uncertain", "sure"]
 
-//var answer = ["images/random1yes.jpg", "images/random2no.jpg", "images/random3yes.jpg", "images/random4no.jpg"];
+	//var answer = ["images/random1yes.jpg", "images/random2no.jpg", "images/random3yes.jpg", "images/random4no.jpg"];
 function random()
 {
 	var rand = -1; //local variable
@@ -14,7 +14,7 @@ function random()
 	
 	
 	rand = Math.random()*answers.length; // 0-10
-	rand = Math.floor(rand);
+	rand = Math.floor(rand); // retuens the nearest integer that is less than the parameter
 	
 	//pic = document.getElementById("answers");
 	//answers[rand];
@@ -29,8 +29,16 @@ function random()
 	else
 	{
 		myAnswer.value = answers[rand];
+		
 	}
 
+}
+
+function reset()
+{
+	document.getElementById("answers").value = "";
+	document.getElementById("question").value="";
+	//alert("hello");
 }
 
 //<img id="picFrame" src="images/slide0.jpg"/>
@@ -42,7 +50,6 @@ function random()
 <center>
 <font color="Green">
 <h1>Magic 8 ball</h1>
-
 Click here to <a href="index.html"> go to my Home page </a> <br/><br/>
 </p>
 
@@ -50,11 +57,11 @@ Click here to <a href="index.html"> go to my Home page </a> <br/><br/>
 
 Put your question in the first text box below.</p>
 
-<input id = "question" type = "text" size="80"/></br></p>
+<input id = "question" type = "text" size="80" onfocusin="reset()"  /></br></p>
 
 <input type="button" value="Magic ball will give his insight" onClick="random()"/></p></p>
 
-<input id = "answers" type = "text" size="80"/>
+<input id = "answers" type = "text" size="80" readonly = true />
 </font>
 
 </center>
