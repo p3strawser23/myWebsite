@@ -1,0 +1,62 @@
+<html>
+<head>
+<script languague = "JavaScript">
+var answers = ["yes", "no", "maybe", "what do you think?", "Probably so", "I disagree", "Ask again later", "It depends", "i think so", "uncertain", "sure"]
+
+//var answer = ["images/random1yes.jpg", "images/random2no.jpg", "images/random3yes.jpg", "images/random4no.jpg"];
+function random()
+{
+	var rand = -1; //local variable
+	var userQ = document.getElementById("question")
+	var myAnswer = document.getElementById("answers")
+	
+	//alert(userQ.value)
+	
+	
+	rand = Math.random()*answers.length; // 0-10
+	rand = Math.floor(rand);
+	
+	//pic = document.getElementById("answers");
+	//answers[rand];
+	
+	//alert(answers[rand]);
+	//alert(userQ.value);
+	
+	if ( userQ.value.length == 0)
+	{
+		myAnswer.value = "Please type a question first.";
+	}
+	else
+	{
+		myAnswer.value = answers[rand];
+	}
+
+}
+
+//<img id="picFrame" src="images/slide0.jpg"/>
+
+</script>
+</head>
+<body background="images/randomBG.gif">
+
+<center>
+<font color="Green">
+<h1>Magic 8 ball</h1>
+
+Click here to <a href="index.html"> go to my Home page </a> <br/><br/>
+</p>
+
+<img id="answer" src="images/random0start.png"/></p>
+
+Put your question in the first text box below.</p>
+
+<input id = "question" type = "text" size="80"/></br></p>
+
+<input type="button" value="Magic ball will give his insight" onClick="random()"/></p></p>
+
+<input id = "answers" type = "text" size="80"/>
+</font>
+
+</center>
+</body>
+</html>
