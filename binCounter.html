@@ -14,13 +14,48 @@ function addOne()
 		number=0;
 		
 	}
+	
+	
+	flipLeds();	
+	
+	
+	if (autoClicked == true)
+	{
+		var timer = setTimeout( "addOne()", 1000 )
+		
+	}
+	
+	
+	document.getElementById("count").value = number;
+}
+
+function auto()
+{
+	
+	if (autoClicked ==false)
+	{
+		autoClicked=true;
+		document.getElementById("runStop").value = "Pause";
+		addOne()
+		
+	}
+	else
+	{
+		autoClicked = false
+		document.getElementById("runStop").value = "Run";
+		
+	}
+	
+}
+
+function flipLeds()
+{	
 	onesPlace();
 	twosPlace();
 	foursPlace();
 	eightsPlace();
-	document.getElementById("count").value = number;
-}
 
+}
 
 function onesPlace()
 {	
