@@ -1,0 +1,117 @@
+<html>
+<head>
+<script language="javaScript">
+var number = 0;
+var autoClicked = false
+
+function addOne()
+{
+	number=number+1;
+	//alert(number);
+	if (number==16)
+	{
+		
+		number=0;
+		
+	}
+	onesPlace();
+	twosPlace();
+	foursPlace();
+	eightsPlace();
+	document.getElementById("count").value = number;
+}
+
+
+function onesPlace()
+{	
+	if(number%2==1)
+	{
+		document.getElementById("ones").src = "images/ledON.png";
+	}
+	else
+	{
+		document.getElementById("ones").src = "images/ledOFF.png";
+	}
+}
+
+
+function twosPlace()
+{
+	if(number%4>1)
+	{
+		document.getElementById("twos").src = "images/ledON.png";
+	}
+	else
+	{
+		document.getElementById("twos").src = "images/ledOFF.png";
+	}
+}
+
+
+function foursPlace()
+{
+	if(number%8>=4)
+	{
+		document.getElementById("fours").src = "images/ledON.png";
+	}
+	else
+	{
+		document.getElementById("fours").src = "images/ledOFF.png";
+	}
+}
+
+
+function eightsPlace()
+{
+	if(number%16>=8)
+	{
+		document.getElementById("eights").src = "images/ledON.png";
+	}
+	else
+	{
+		document.getElementById("eights").src = "images/ledOFF.png";
+	}
+}
+
+
+
+
+
+</script>
+<head>
+<body>
+<center>
+<h1> Binary Clock </h1>
+
+Click here to <a href="index.html"> go to my Home page </a> <br/><br/>
+<input type = "button" value = "Add One" onclick="addOne()"/>
+<input id="runStop" type = "button" value = "Run" onclick="auto()"/><br/><br/>
+<input id="count" type = "text" size ="20" style="text-align:center">
+
+
+<div id="first" style="position:absolute; top:150; left: 600">
+2^0<br/>
+<img id="ones" src="images/ledOFF.png" width="50"/>
+</div>
+
+<div id="second" style="position:absolute; top:150; left: 500">
+2^1<br/>
+<img id="twos" src="images/ledOFF.png" width="50"/>
+</div>
+
+<div id="third" style="position:absolute; top:150; left: 400">
+2^2<br/>
+<img id="fours" src="images/ledOFF.png" width="50"/>
+</div>
+
+
+<div id="fourth" style="position:absolute; top:150; left: 300">
+2^3<br/>
+<img id="eights" src="images/ledOFF.png" width="50"/>
+</div>
+
+
+
+</center>
+</body>
+</html>
