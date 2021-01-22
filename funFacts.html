@@ -1,0 +1,94 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+1. you need to identify the first variable of the list group. 
+2. you pair it with the second list, the facts
+3. pair the rest of the list to its opposite
+4. allow what is displayed to be changed
+5. when button is clicked display paired facts 
+6. allow repetition
+7. 
+8. 
+9. 
+10. 
+
+
+*/
+
+
+var group = ["-- Choose a Game --", "Super Mario Bros.", "Legend of Zelda", 
+"Pong", "Sonic", "Pac-Man", "Tron", "Defender"];
+
+var facts = ["-- No game selected --", "Mario was originally a carpenter",
+ "Zelda is the princess! Link is the knight", 
+ "Pong was the first succesful video game ever made. BUT not the first arcade game.",
+ "Sonic was originally a rabbit not a hedgehog.", "Pac-man had the first video game cutscenes!",
+ "Tron was inspired by Pong", "Defender was the HARDEST video game at its time."];
+
+function loadData()
+{
+	var sum = 0;
+	for(var i = 0; i<group.length; i++)
+    {
+        var daList = document.getElementById("game");
+  		var option = document.createElement("option");
+  		option.text = group[i];
+  		daList.add(option);
+    }
+}
+// This function identifies which element from the drop down has been selected. It calls the 
+// getIndex function to acquire what the index of the selected item. Then it displays the 
+// corresponding element in the facts list. (This is diplayed in the textbox on the web page.)
+function start()
+{
+	// We'll code this second
+	
+	var selection = document.getElementById("game");
+	
+	var daIndex = getIndex(selection.value);
+	
+}
+
+// This function searches the group array for the element passed as a parameter
+// and returns the index number for that element in the array.
+function getIndex(d)
+{ 
+	var answer = -1; //invalid index value
+	for(i=0; i < group.length; i++) 
+	{
+		if(group[i] == d)
+		{
+			answer = i;
+			
+			
+			document.getElementById("funFact").value = facts[i];
+		}
+	}
+	return answer;
+}
+
+
+
+</script>
+</head>
+<body onload="loadData()" background="images/whiteVeinyBG.gif"> 
+<center>
+<h1>Retro Video Game Fun Facts!</h1>
+Click <a href="index.html"> here</a> to returnto my home page.
+
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<select name="p1" id="game"></select>	</td>
+		<td>	<input id="funFact" type="text" size="40"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="click" onclick="start()"/>
+</center>
+
+
+</body>
+</html>
