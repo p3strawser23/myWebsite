@@ -1,0 +1,237 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+1. Define questions and answers in array
+2. Have button displays and allow questions to cycle or be random.
+3Have textbox that allows users answer
+4. when user answers, check if correct and display correct or incorrect
+5. increase score based on user answer
+6. Display new question
+7.reset the textbox and allow new answer
+8. When done with all questions display % correct
+9 allow questions to reset in new order
+10. Reset score if re randomized questions
+
+
+*/
+
+
+var questions = ["What is 80 divided by 5", "Who is the current president?", "Who is the vice president?", "What state does CREATOR live in?", "What year did the US sign the declaration of independence", "Who was the first US president?", "What is 9 divivded by 3?", "What is the answer to life, the universe, and everything?(Hitch hiker...)", "What code was this written in?", "What is the opposite of yes?"]; 
+// Create an array of 10ish questions.
+// Create an array of the cooresponding answers to the questions above.
+var answers = ["16", "Joe Biden", "Kamala Harris", "California", "1776", "George Washington", "3", "42", "JavaScript", "No"];
+
+var filled = [false, false, false, false, false, false, false, false, false, false];
+
+var index = 0;
+
+var score = 0;
+
+var i = 1;
+var rand = 0;
+var specialCheck = 0;
+
+
+// Create code in displayQuestion that will display the contents of the questions array, one 
+// element at a time. After the last element is displayed, the program should display the first
+// element again.
+function displayQuestion()
+{
+	
+	index++
+	rand = Math.random()*10
+	rand = Math.floor(rand)
+	var answerText = document.getElementById("answer")
+	answerText.value = "";
+	if (index < questions.length)
+	{
+		
+		
+		while (filled[rand] == true)
+		{	
+			rand = Math.random()*10;
+			rand = Math.floor(rand)
+		}
+		filled[rand] = true;
+		
+		var displayedQuestion = document.getElementById("question")
+		displayedQuestion.value = questions[rand];
+		
+		specialCheck++
+		alert(specialCheck);
+		if(specialCheck == questions.length-1)
+		{
+			alert("complete");
+			if(score==10)
+			{
+				alert("Congratulations you got 100%");
+			}
+			else if(score==9)
+			{
+				alert("Almost perfect! 90%");
+			}
+			else if(score==8)
+			{
+				alert("Great Job! 80%");
+			}
+			else if(score==7)
+			{
+				alert("Doing good! 70%");
+			}
+			else if(score==6)
+			{
+				alert("Better but still an F. 60%");
+			}
+			else if(score==5)
+			{
+				alert("Half correct 50%");
+			}
+			else if(score==4)
+			{
+				alert("Getting better 40%");
+			}
+			else if(score==3)
+			{
+				alert("Study harder! 30%");
+			}
+			else if(score==2)
+			{
+				alert("Not the worst but still bad. 20%");
+			}
+			else if(score==1)
+			{
+				alert("Practice needed. 10%")
+			}
+			else if(score==0)
+			{
+				alert("Terrible! Get better at trivia. 0%");
+			}
+			alert("Reload the Page to reset.")
+		}
+		
+		//alert(rand);
+	}
+	
+	
+}
+
+/*if(specialCheck <= 10)
+	{
+		if(score==10)
+		{
+			alert("Congratulations you got 100%");
+		}
+		else if(score==9)
+		{
+			alert("Almost perfect! 90%");
+		}
+		else if(score==8)
+		{
+			alert("Great Job! 80%");
+		}
+		else if(score==7)
+		{
+			alert("Doing good! 70%");
+		}
+		else if(score==6)
+		{
+			alert("Better but still an F. 60%");
+		}
+		else if(score==5)
+		{
+			alert("Half correct 50%");
+		}
+		else if(score==4)
+		{
+			alert("Getting better 40%");
+		}
+		else if(score==3)
+		{
+			alert("Study harder! 30%");
+		}
+		else if(score==2)
+		{
+			alert("Not the worst but still bad. 20%");
+		}
+		else if(score==1)
+		{
+			alert("Practice needed. 10%")
+		}
+		else if(score==0)
+		{
+			alert("Terrible! Get better at trivia. 0%");
+		}
+		alert("Reload the Page to reset.")
+	}
+*/	
+// This function will first acquire the user's answer (from the textbox with the ID "answer". 
+//Then this function will pass that to the checkAnswer function (note: that there is a parameter.) 
+//The checkAnswer will return a true or a false. If that function returns true, then the score variable will
+// increase by 1, and an alert should pop up saying "Correct" or something positive. 
+//If the checkAnswer function comes back false, then score doesn't increase but an alert should 
+//announce "incorect." or something similar. 
+function updateScore()
+{
+	var userAnswer = document.getElementById("answer");
+	var checkUserA = checkAnswer(userAnswer.value);
+	
+	alert("Your score is " + score);
+}
+// This function takes a parameter which will be the users answer. If what the user has submitted 
+//the correct answer, this method should return true. Otherwise it should return false. 
+function checkAnswer(ans)
+{
+	//alert("check!");
+	var check = false; //invalid index value
+	//for(i=0; i < question.length; i++) 
+	
+	if(answers[rand] == ans)
+	{
+		check = true;
+		alert("correct!");
+		score++
+		
+		//document.getElementById("answer").value = answers[rand];
+	}
+	else
+	{
+		alert("Incorrect");
+	}
+	
+	
+	return check;
+}
+
+
+
+</script>
+</head>
+<body > 
+<center>
+<h1>My Quiz</h1>
+<br/>
+Click <a href="index.html"> here</a> to returnto my home page.
+<br/><br/>
+<h2>
+Rules: </h2><h3>Capitals required. First and last names. Correct spelling</h3>
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<input id="question" type="text" size="70" readonly = true/>	</td>
+	</tr>
+	<tr height = "12"><td></td>
+	</tr>
+	<tr>
+		<td>	<input id="answer" type="text" size="70" onfocusout="updateScore()"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<br/><br/>
+<input type="button" value="Next Question" onclick="displayQuestion()"/>
+</center>
+
+
+</body>
+</html>
