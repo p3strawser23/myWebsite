@@ -1,0 +1,264 @@
+<html>
+<head>
+<script language = "JavaScript">
+
+
+var roomInputs = ["Inputs", "North", "South", "East", "West", "Yes", "No", "Pick Up item"];
+
+var roomDescript = ["Choose an Input to play Adventure Game",
+ "This is the starting room room. You see a hallway to the west and east. The path south is blocked.",
+ "This is the West room. The path east leads to starting room. The door north is locked. You see an item on the table.",
+ "You see a large ogre gaurding the door out. Do you run? (Yes or No)",
+ "This is the secret room. The path south leads to the ogre room. There is a hallway to the east.",
+ "You fell into a deep spike pit! YOU DIED! Play again?(Use yes or no)",
+ "You have escaped the dungeon! You win! Play again?(Use yes or no)",
+ "Welcome to ADVENTURE GAME, The hit new chose your own adventure full of traps, treasure, and secrets!"];
+
+var roomID = 0
+var itemHave = false
+
+function loadOnStart()
+{
+	document.getElementById("descript").value = roomDescript[7];
+	var sum = 0;
+	for(var i = 0; i<roomInputs.length; i++)
+    {
+        var daList = document.getElementById("listInput");
+  		var option = document.createElement("option");
+  		option.text = roomInputs[i];
+  		daList.add(option);
+    }
+}
+
+function onstartUp()
+{
+	
+	var selection = document.getElementById("listInput");
+	
+	var daIndex = getUserInput(selection.value);
+	
+}
+
+
+function getUserInput(d)
+{ 
+	var answer = -1; //invalid index value
+	for(i=0; i < roomInputs.length; i++) 
+	{
+		if(roomInputs[i] == d)
+		{
+			
+			answer = i;
+			
+			//title room
+			
+			if(roomID == 0)
+			{
+				
+				//Input was North
+				if(d == "North")
+				{
+					roomID = 1
+					//alert(roomID);
+					document.getElementById("descript").value = roomDescript[1];
+				}
+				//Input was Inputs
+				else if(d == "Inputs")
+				{
+					document.getElementById("descript").value = roomDescript[0];
+				}
+				//Input was anything else
+				else
+				{
+					document.getElementById("descript").value = "You can't do that here!";
+				}
+			}
+			
+			//starting room
+			else if(roomID == 1)
+			{
+				//input was west
+				if(d == "West")
+				{
+					roomID = 2
+					document.getElementById("descript").value = roomDescript[2];
+				}
+				//input was east
+				else if(d == "East")
+				{
+					roomID = 6
+					document.getElementById("descript").value = roomDescript[4];
+				}
+				else if(d == "Inputs")
+				{
+					document.getElementById("descript").value = roomDescript[0];
+				}
+				else
+				{
+					//alert("Blob");
+					document.getElementById("descript").value = "You can't do that here!";
+				}
+			}
+			//west room
+			else if(roomID == 2)
+			{
+				
+				if(d == "Pick Up item")
+				{
+					itemHave=true
+					alert("You Have picked up a key!");
+					
+				}
+				else if(d == "North")
+				{
+					if(itemHave == true)
+					{
+						roomID = 3
+						document.getElementById("descript").value = roomDescript[3];
+					}
+					else
+					{
+						document.getElementById("descript").value = "The door is locked. Pick up the item?";
+					}
+				}
+				else if(d == "East")
+				{
+					roomID = 1
+					document.getElementById("descript").value = roomDescript[1];
+				}
+				else if(d == "Inputs")
+				{
+					document.getElementById("descript").value = roomDescript[0];
+				}
+				else
+				{
+					document.getElementById("descript").value = "You can't do that here!";
+				}
+			}
+			//ogre room
+			else if(roomID == 3)
+			{
+				
+				//Input was North
+				if(d == "Yes")
+				{
+					roomID = 5
+					//alert(roomID);
+					document.getElementById("descript").value = roomDescript[6];
+				}
+				else if(d=="No")
+				{
+					document.getElementById("descript").value = "You decided to fight the ogre. Sadly it didn't go well and he gets a tasty lunch. Play again?(Yes or No)";
+					roomID=5
+				}
+				//Input was Inputs
+				else if(d == "Inputs")
+				{
+					document.getElementById("descript").value = roomDescript[0];
+				}
+				//Input was anything else
+				else
+				{
+					document.getElementById("descript").value = "You can't do that here!";
+				}
+			}
+			
+			else if(roomID == 4)
+			{
+				if(d == "Yes")
+				{
+					roomID = 1
+					document.getElementById("descript").value = roomDescript[1];
+				}
+				else if(d == "No")
+				{
+					document.getElementById("descript").value = "See you later!";
+				}
+				else if(d == "Inputs")
+				{
+					document.getElementById("descript").value = roomDescript[0];
+				}
+				else
+				{
+					document.getElementById("descript").value = "You died! Play again?(Yes or No)";
+				}
+			}
+			else if(roomID == 5)
+			{
+				if(d == "Yes")
+				{
+					roomID = 1
+					document.getElementById("descript").value = roomDescript[1];
+				}
+				else if(d == "No")
+				{
+					document.getElementById("descript").value = "See you later!";
+				}
+				else if(d == "Inputs")
+				{
+					document.getElementById("descript").value = roomDescript[0];
+				}
+				else
+				{
+					document.getElementById("descript").value = "You Won! Play again?(Yes or No)";
+				}
+			}
+			else if(roomID==6)
+			{
+				if(d=="East")
+				{
+					roomID=4
+					document.getElementById("descript").value = roomDescript[5];
+				}
+				else if(d=="West")
+				{
+					roomID=1
+					document.getElementById("descript").value = roomDescript[1];
+				}
+				else if(d=="South")
+				{
+					roomID=3
+					document.getElementById("descript").value = roomDescript[3];
+				}
+				else
+				{
+					document.getElementById("descript").value = "You can't do that here!";
+				}
+			}
+			
+			
+			
+			//document.getElementById("descript").value = roomDescript[i];
+		}
+	}
+	return answer;
+}
+
+
+
+</script>
+</head>
+<body onload="loadOnStart()" background="images/backgroundcave.gif" > 
+<center>
+<font color=white>
+<h2>Create PT Test</h2>
+<h1>ADVENTURE GAME</h1>
+Click <a href="index.html"> here</a> to returnto my home page.
+
+<br/><br/>
+</font>
+<table border = 3>
+	<tr>
+		<td>  	<select name="p1" id="listInput"></select>	</td><br>
+		<td>	<input id="descript" type="text" size="95"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="Do Action" onclick="onstartUp()"/>
+</center>
+
+
+
+</body>
+</html>
+
