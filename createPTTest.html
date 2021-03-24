@@ -4,13 +4,13 @@
 
 
 var roomInputs = ["Inputs", "North", "South", "East", "West", "Yes", "No", "Pick Up item"];
-
+var imageList = ["images/pixilTitle.png", "images/startingRoomImage.jpg", "images/dungeonDoor.png", "images/ogreRoom.png", "images/dedImage.jpg", "images/youWin.png", "images/dungeonHallway.jpg"]
 var roomDescript = ["Choose an Input to play Adventure Game",
  "This is the starting room room. You see a hallway to the west and east. The path south is blocked.",
  "This is the West room. The path east leads to starting room. The door north is locked. You see an item on the table.",
  "You see a large ogre gaurding the door out. Do you run? (Yes or No)",
  "This is the secret room. The path south leads to the ogre room. There is a hallway to the east.",
- "You fell into a deep spike pit! YOU DIED! Play again?(Use yes or no)",
+ "You got locked in! With no way out you have to hope someone finds you. YOU DIED! Play again?(Use yes or no)",
  "You have escaped the dungeon! You win! Play again?(Use yes or no)",
  "Welcome to ADVENTURE GAME, The hit new chose your own adventure full of traps, treasure, and secrets!"];
 
@@ -61,6 +61,7 @@ function getUserInput(d)
 					roomID = 1
 					//alert(roomID);
 					document.getElementById("descript").value = roomDescript[1];
+					document.getElementById("picFrame").src = imageList[roomID];
 				}
 				//Input was Inputs
 				else if(d == "Inputs")
@@ -82,12 +83,14 @@ function getUserInput(d)
 				{
 					roomID = 2
 					document.getElementById("descript").value = roomDescript[2];
+					document.getElementById("picFrame").src = imageList[roomID];
 				}
 				//input was east
 				else if(d == "East")
 				{
 					roomID = 6
 					document.getElementById("descript").value = roomDescript[4];
+					document.getElementById("picFrame").src = imageList[roomID];
 				}
 				else if(d == "Inputs")
 				{
@@ -115,6 +118,7 @@ function getUserInput(d)
 					{
 						roomID = 3
 						document.getElementById("descript").value = roomDescript[3];
+						document.getElementById("picFrame").src = imageList[roomID];
 					}
 					else
 					{
@@ -125,6 +129,7 @@ function getUserInput(d)
 				{
 					roomID = 1
 					document.getElementById("descript").value = roomDescript[1];
+					document.getElementById("picFrame").src = imageList[roomID];
 				}
 				else if(d == "Inputs")
 				{
@@ -145,11 +150,13 @@ function getUserInput(d)
 					roomID = 5
 					//alert(roomID);
 					document.getElementById("descript").value = roomDescript[6];
+					document.getElementById("picFrame").src = imageList[roomID];
 				}
 				else if(d=="No")
 				{
 					document.getElementById("descript").value = "You decided to fight the ogre. Sadly it didn't go well and he gets a tasty lunch. Play again?(Yes or No)";
-					roomID=5
+					roomID=4
+					document.getElementById("picFrame").src = imageList[roomID];
 				}
 				//Input was Inputs
 				else if(d == "Inputs")
@@ -169,10 +176,12 @@ function getUserInput(d)
 				{
 					roomID = 1
 					document.getElementById("descript").value = roomDescript[1];
+					document.getElementById("picFrame").src = imageList[roomID];
 				}
 				else if(d == "No")
 				{
 					document.getElementById("descript").value = "See you later!";
+					
 				}
 				else if(d == "Inputs")
 				{
@@ -189,6 +198,7 @@ function getUserInput(d)
 				{
 					roomID = 1
 					document.getElementById("descript").value = roomDescript[1];
+					document.getElementById("picFrame").src = imageList[roomID];
 				}
 				else if(d == "No")
 				{
@@ -209,16 +219,19 @@ function getUserInput(d)
 				{
 					roomID=4
 					document.getElementById("descript").value = roomDescript[5];
+					document.getElementById("picFrame").src = imageList[roomID];
 				}
 				else if(d=="West")
 				{
 					roomID=1
 					document.getElementById("descript").value = roomDescript[1];
+					document.getElementById("picFrame").src = imageList[roomID];
 				}
 				else if(d=="South")
 				{
 					roomID=3
 					document.getElementById("descript").value = roomDescript[3];
+					document.getElementById("picFrame").src = imageList[roomID];
 				}
 				else
 				{
@@ -238,9 +251,9 @@ function getUserInput(d)
 
 </script>
 </head>
-<body onload="loadOnStart()" background="images/backgroundcave.gif" > 
+<body onload="loadOnStart()" background="images/dungeonBG.jpg" > 
 <center>
-<font color=gray>
+<font color=White>
 <h2>Create PT Test</h2>
 <h1>ADVENTURE GAME</h1>
 Click <a href="index.html"> here</a> to returnto my home page.
@@ -255,6 +268,10 @@ Click <a href="index.html"> here</a> to returnto my home page.
 </table>
 <br/><br/>
 <input type="button" value="Do Action" onclick="onstartUp()"/>
+</br>
+</br>
+</br>
+<img id="picFrame" src="images/pixilTitle.png"/>
 </center>
 
 
